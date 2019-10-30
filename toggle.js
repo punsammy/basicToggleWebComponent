@@ -12,6 +12,15 @@ class InfoToggle extends HTMLElement {
     this._toggleButton.addEventListener("click", this._toggleInfoBox.bind(this));
   }
 
+  connectedCallback() {
+    if (this.hasAttribute("is-visible")) {
+      if (this.getAttribute("is-visible") === "true") {
+        this._isVisible = true;
+        this._infoBox.style.display = "block";
+      }
+    }
+  }
+
   _toggleInfoBox(){
     this._isVisible = !this._isVisible;
     this._infoBox.style.display = this._isVisible ? "block" : "none";
